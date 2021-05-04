@@ -36,11 +36,13 @@ class DishDetail extends Component{
         if(this.props.dish != null){
             const feedback = this.props.dish.comments.map((element) => {
                 return(
+                <div className ="container">
                 <div key = {element.id} >
                     <ul class="list-unstyled">
                     <li>{element.comment}</li>
-                    <li>--{element.author} {element.date}</li>
+                    <li>--{element.author} , {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(element.date)))}</li>
                     </ul>
+                </div>
                 </div>
 
             );
