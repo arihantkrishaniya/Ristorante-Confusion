@@ -28,8 +28,8 @@ export const LEADERS = [
     },
     {
       id: 3,
-      name: 'Arihant Krishaniya',
-      image: '/assets/images/Arihant.jpg',
+      name: 'Alberto Somayya',
+      image: '/assets/images/alberto.png',
       designation: 'Executive Chef',
       abbr: 'EC',
       featured: true,
