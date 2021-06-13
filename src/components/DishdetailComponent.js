@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 import { Component } from 'react';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import {Loading} from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
+
 
     function RenderDish({dish}){
         if(dish != null){
             return(
                 <div className = "col-12 col-md-5 m-1">
                 <Card>
-                    <CardImg width="100%" src = {dish.image} alt ={dish.name} />
+                    <CardImg top src={baseUrl + dish.image} alt={dish.name} />
                         <CardBody>
                             <CardTitle>{dish.name}</CardTitle>
                             <CardText>{dish.description}</CardText>
@@ -27,7 +29,7 @@ import {Loading} from './LoadingComponent';
         }
     } 
     
-    function RenderComments({comments,addComment,dishId}){
+    function RenderComments({comments,postComment,dishId}){
         if(comments != null){
             const feedback = comments.map((element) => {
                 return(  
@@ -52,7 +54,7 @@ import {Loading} from './LoadingComponent';
                     <div>
                         {feedback}
                         <div className="row">
-                        <CommentForm dishId={dishId} addComment={addComment} />
+                        <CommentForm dishId={dishId} postComment={postComment} />
                         </div>
                     </div>
                 </div>
@@ -93,7 +95,7 @@ import {Loading} from './LoadingComponent';
   
         handleSubmit(values){
             this.toggleModal();
-            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+            this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
         }
 
         render(){
@@ -213,7 +215,7 @@ import {Loading} from './LoadingComponent';
                 <div className="row">
                     <RenderDish dish={props.dish} />
                     <RenderComments comments={props.comments}
-                    addComment={props.addComment}
+                    postComment={props.postComment}
                     dishId = {props.dish.id} /> 
                 </div>
             </div>
